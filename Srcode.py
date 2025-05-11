@@ -9,3 +9,11 @@ class NQueenGA:
     # تابع برای ایجاد جمعیت اولیه
     def create_initial_population(self):
         return [self.random_chromosome() for _ in range(self.population_size)]
+        # تابع برای محاسبه برازندگی (fitness) کروموزوم
+    def fitness(self, chromosome):
+        clashes = 0  
+        for i in range(self.n):
+            for j in range(i + 1, self.n):
+                if chromosome[i] == chromosome[j] or abs(chromosome[i] - chromosome[j]) == j - i:
+                    clashes += 1
+        return self.n * (self.n - 1) // 2 - clashes
