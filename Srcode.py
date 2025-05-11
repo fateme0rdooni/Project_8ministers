@@ -16,3 +16,12 @@ class NQueenGA:
                 if chromosome[i] == chromosome[j] or abs(chromosome[i] - chromosome[j]) == j - i:
                     clashes += 1
         return self.n * (self.n - 1) // 2 - clashes
+    def next_generation(self):
+        selected = self.selection()
+        next_pop = list(selected)
+        while len(next_pop) < self.population_size:
+            parent1, parent2 = random.sample(selected, 2)
+            child = self.crossover(parent1, parent2)
+            self.mutate(child)
+            next_pop.append(child)
+        self.population = next_pop[:self.population_size]
