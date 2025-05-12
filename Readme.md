@@ -1,3 +1,4 @@
+Hello
 <<<<<<< HEAD
 In this project, we created the Eight Ministers algorithm.
 =======
