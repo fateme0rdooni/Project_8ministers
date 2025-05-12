@@ -25,3 +25,11 @@ class NQueenGA:
             self.mutate(child)
             next_pop.append(child)
         self.population = next_pop[:self.population_size]
+         # تابع رسم صفحه شطرنج
+    def draw_board(self, solution):
+        board = []
+        for row in range(self.n):
+            line = ['.'] * self.n  # خانه‌های خالی
+            line[solution[row]] = 'Q'  # قرار دادن ملکه
+            board.append(' '.join(line))
+        return '\n'.join(board)
